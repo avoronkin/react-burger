@@ -1,11 +1,11 @@
+import { FC, PropsWithChildren } from 'react'
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
 import { EmptyIngredient } from './empty-ingredient'
-import React from 'react'
 import { selectBurgerBunIngredient } from '../../store/burger-constructor/selectors'
 import styles from './burger-constructor.module.css'
 import { useAppSelector } from '../../hooks'
 
-export const BunIngredient = ({ children }: { children?: React.ReactNode }) => {
+export const BunIngredient: FC<PropsWithChildren> = ({ children }) => {
     const bunIngredient = useAppSelector(selectBurgerBunIngredient)
     const emptyText = 'Булка на выбрана'
 

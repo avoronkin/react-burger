@@ -7,6 +7,7 @@ import { passwordIsValid, tokenIsValid } from '../../store/user/validation'
 import { selectForgotPassword, selectResetPassword } from '../../store/user/selectors'
 import { useAppDispatch, useAppSelector, useForm } from '../../hooks'
 import { ErrorNote } from '../error'
+import { FC } from 'react'
 import { HelpLink } from '../help-link/help-link'
 import { LoadingSpinner } from '../loading-spinner'
 import { ROUTES } from '../../constants'
@@ -19,7 +20,7 @@ interface IResetPasswordForm {
     token: string
 }
 
-export const ResetPassword = () => {
+export const ResetPassword: FC = () => {
     const dispatch = useAppDispatch()
 
     const { 

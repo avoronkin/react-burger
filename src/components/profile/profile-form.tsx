@@ -5,6 +5,7 @@ import {
     Input,
     PasswordInput,
 } from '@ya.praktikum/react-developer-burger-ui-components'
+import { FC, useEffect } from 'react'
 import { emailIsValid, nameIsValid, passwordIsValid, } from '../../store/user/validation'
 import { getUser, updateUser } from '../../store/user/actions'
 import { selectGetUser, selectUpdateUser } from '../../store/user/selectors'
@@ -12,7 +13,6 @@ import { useAppDispatch, useAppSelector, useForm } from '../../hooks'
 import { ErrorNote } from '../error'
 import { LoadingSpinner } from '../loading-spinner'
 import styles from './profile-form.module.css'
-import { useEffect } from 'react'
 
 interface IProfileForm {
     name: string
@@ -20,7 +20,7 @@ interface IProfileForm {
     password: string
 }
 
-export const ProfileForm = () => {
+export const ProfileForm: FC = () => {
     const dispatch = useAppDispatch()
     const { user, getUserRequest, getUserError } = useAppSelector(selectGetUser)
     const { updateUserRequest, updateUserError } = useAppSelector(selectUpdateUser)

@@ -1,10 +1,12 @@
-import React from 'react'
+import { FC, ReactNode } from 'react'
 import styles from './modal-overlay.module.css'
 
-export const ModalOverlay = ({ handleClose, children }: {
+export interface ModalOverlayProps {
     handleClose: () => void
-    children?: React.ReactNode,
-}) => {
+    children?: ReactNode,
+}
+
+export const ModalOverlay: FC<ModalOverlayProps> = ({ handleClose, children }) => {
 
     return (
         <div

@@ -1,6 +1,7 @@
+import { FC } from 'react'
 import { ProfileLayout } from '../profile/profile-layout'
 
-export const Orders = () => {
+export const Orders: FC = () => {
     return (
         <ProfileLayout>
             <div>

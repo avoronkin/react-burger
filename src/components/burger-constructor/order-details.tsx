@@ -1,11 +1,12 @@
 import {
     CheckMarkIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components'
+import { FC } from 'react'
 import { selectOrder } from '../../store/order/selectors'
 import styles from './order-details.module.css'
 import { useAppSelector } from '../../hooks'
 
-export const OrderDetails = () => {
+export const OrderDetails: FC = () => {
     const order = useAppSelector(selectOrder)
 
     return (

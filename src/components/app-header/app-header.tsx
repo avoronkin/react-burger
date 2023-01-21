@@ -4,12 +4,13 @@ import {
     Logo,
     ProfileIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components'
+import { TopMenuItem, TopMenuItemProps } from './top-menu-item'
+import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../../constants'
-import { TopMenuItem } from './top-menu-item'
 import styles from './app-header.module.css'
 
-const topMenuItems: TopMenuItem[] = [
+const topMenuItems: TopMenuItemProps[] = [
     {
         icon: BurgerIcon,
         to: ROUTES.MAIN,
@@ -30,7 +31,7 @@ const topMenuItems: TopMenuItem[] = [
     }
 ]
 
-export const AppHeader = () => {
+export const AppHeader: FC = () => {
 
     return (
         <header>
@@ -41,9 +42,9 @@ export const AppHeader = () => {
                     </Link>
                 </li>
                 {
-                    topMenuItems.map((topMenuItem, index) => {
+                    topMenuItems.map((topMenuItemProps, index) => {
                         return (
-                            <TopMenuItem key={index} {...topMenuItem}/>
+                            <TopMenuItem key={index} {...topMenuItemProps}/>
                         )
                     })
                 }

@@ -1,3 +1,4 @@
+import { FC, useRef } from 'react'
 import { ErrorNote } from '../error'
 import { Ingredients } from './ingredients'
 import { LoadingSpinner } from '../loading-spinner'
@@ -5,9 +6,8 @@ import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import { selectIngredientsList } from '../../store/burger-ingredients/selectors'
 import styles from './burger-ingredients.module.css'
 import { useAppSelector } from '../../hooks'
-import { useRef } from 'react'
 
-export const BurgerIngredients = () => {
+export const BurgerIngredients: FC = () => {
 
     const {
         ingredientTabs,

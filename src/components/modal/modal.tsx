@@ -1,15 +1,17 @@
+import { FC, ReactNode } from 'react'
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { ModalOverlay } from './modal-overlay'
 import { Portal } from '../portal'
-import React from 'react'
 import styles from './modal.module.css'
 import { useKey } from '../../hooks'
 
-export const Modal = ({ handleClose, title, children }: {
+export interface ModalProps {
     handleClose: () => void
     title?: string
-    children?: React.ReactNode,
-}) => {
+    children?: ReactNode,
+}
+
+export const Modal: FC<ModalProps> = ({ handleClose, title, children }) => {
     useKey('Escape', () => handleClose())
 
     return (

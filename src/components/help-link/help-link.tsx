@@ -1,4 +1,5 @@
 import { Button } from '@ya.praktikum/react-developer-burger-ui-components'
+import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './help-link.module.css'
 
@@ -8,7 +9,7 @@ export interface HelpLinkProps {
     to: string
 }
 
-export const HelpLink = (props: HelpLinkProps) => {
+export const HelpLink: FC<HelpLinkProps> = (props) => {
     const {
         linkText,
         beforeText,

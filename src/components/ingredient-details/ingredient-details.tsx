@@ -1,12 +1,12 @@
+import { FC, useEffect } from 'react'
 import { addIngredientDetails, removeIngredientDetails } from '../../store/ingredient-details/actions'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { selectIngredientDetails } from '../../store/ingredient-details/selectors'
 import { selectIngredientsList } from '../../store/burger-ingredients/selectors'
 import styles from './ingredient-details.module.css'
-import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-export const IngredientDetails = () => {
+export const IngredientDetails: FC = () => {
     const dispatch = useAppDispatch()
     const { id } = useParams<{ id: string }>()
     const ingredientDetails = useAppSelector(selectIngredientDetails)

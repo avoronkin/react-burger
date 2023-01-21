@@ -7,6 +7,7 @@ import {
 import { emailIsValid, nameIsValid, passwordIsValid } from '../../store/user/validation'
 import { useAppDispatch, useAppSelector, useForm } from '../../hooks'
 import { ErrorNote } from '../error'
+import { FC } from 'react'
 import { HelpLink } from '../help-link/help-link'
 import { LoadingSpinner } from '../loading-spinner'
 import { ROUTES } from '../../constants'
@@ -20,7 +21,7 @@ interface IRegisterForm {
     password: string
 }
 
-export const Register = () => {
+export const Register: FC = () => {
     const {
         registerRequest,
         registerError,

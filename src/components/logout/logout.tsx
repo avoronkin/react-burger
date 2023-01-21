@@ -1,3 +1,4 @@
+import { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { ErrorNote } from '../error'
 import { LoadingSpinner } from '../loading-spinner'
@@ -5,9 +6,8 @@ import { ROUTES } from '../../constants'
 import { Redirect } from 'react-router-dom'
 import { logout } from '../../store/user/actions'
 import { selectLogout } from '../../store/user/selectors'
-import { useEffect } from 'react'
 
-export const Logout = () => {
+export const Logout: FC = () => {
     const dispatch = useAppDispatch()
     const { logoutRequest, logoutError } = useAppSelector(selectLogout)
 

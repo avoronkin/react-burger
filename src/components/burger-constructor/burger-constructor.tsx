@@ -1,5 +1,6 @@
 import { BunIngredient } from './bun-ingredient'
 import { DND_TYPES } from '../../constants'
+import { FC } from 'react'
 import { IIngredient } from '../../types'
 import { InternalIngredients } from './internal-ingredients'
 import { OrderToolbar } from './order-toolbar'
@@ -8,7 +9,7 @@ import { useAppDispatch } from '../../hooks'
 import { useDrop } from 'react-dnd'
 import { v4 as uuidv4 } from 'uuid'
 
-export const BurgerConstructor = () => {
+export const BurgerConstructor: FC = () => {
     const dispatch = useAppDispatch()
 
     const [, dropRef] = useDrop({

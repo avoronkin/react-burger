@@ -1,7 +1,13 @@
-import React from 'react'
+import { FC, ReactNode } from 'react'
 import styles from './empty-ingredient.module.css'
 
-export const EmptyIngredient = ({ type, extraClass = '', children }: { type?: 'bottom' | 'top', extraClass?: string, children?: React.ReactNode }) => {
+export interface EmptyIngredientProps {
+    type?: 'bottom' | 'top',
+    extraClass?: string,
+    children?: ReactNode
+}
+
+export const EmptyIngredient: FC<EmptyIngredientProps> = ({ type, extraClass = '', children }) => {
 
     const posClassName = type && ['top', 'bottom'].includes(type) ? `constructor-element_pos_${type}` : ''
 

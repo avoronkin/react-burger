@@ -1,6 +1,11 @@
+import { FC } from 'react'
 import styles from './loading-spinner.module.css'
 
-export const LoadingSpinner = ({ text }: { text?: string }) => {
+export interface LoadingSpinnerProps {
+    text?: string
+}
+
+export const LoadingSpinner: FC<LoadingSpinnerProps> = ({ text }) => {
     return (
         <div className={styles.spinnerWrapper}>
             <div className={styles.loadingSpinner}></div>

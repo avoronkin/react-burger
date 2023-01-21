@@ -2,10 +2,11 @@ import {
     Link,
     useRouteMatch
 } from 'react-router-dom'
+import { FC } from 'react'
 import { ROUTES } from '../../../constants'
 import styles from './profile-nav.module.css'
 
-export const ProfileNav = () => {
+export const ProfileNav: FC = () => {
     const matchProfile = useRouteMatch({ path: ROUTES.PROFILE, exact: true })
     const matchOrders = useRouteMatch({ path: ROUTES.ORDERS, exact: true })
 

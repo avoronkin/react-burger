@@ -6,6 +6,7 @@ import {
 import { emailIsValid, passwordIsValid } from '../../store/user/validation'
 import { useAppDispatch, useAppSelector, useForm } from '../../hooks'
 import { ErrorNote } from '../error'
+import { FC } from 'react'
 import { HelpLink } from '../help-link/help-link'
 import { LoadingSpinner } from '../loading-spinner'
 import { ROUTES } from '../../constants'
@@ -18,7 +19,7 @@ interface ILoginForm {
     password: string
 }
 
-export const Login = () => {
+export const Login: FC = () => {
     const { loginRequest, loginError } = useAppSelector(selectLogin)
     const dispatch = useAppDispatch()
 

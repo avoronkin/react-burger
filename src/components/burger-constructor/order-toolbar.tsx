@@ -1,6 +1,7 @@
 import { Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { closeOrderDetails, createOrder } from '../../store/order/actions'
 import { useAppDispatch, useAppSelector } from '../../hooks'
+import { FC } from 'react'
 import { Modal } from '../modal'
 import { OrderDetails } from './order-details'
 import { resetBurgerIngredients } from '../../store/burger-constructor/actions'
@@ -10,7 +11,7 @@ import { selectIsAuthenticated } from '../../store/user/selectors'
 import styles from './order-toolbar.module.css'
 import { useHistory } from 'react-router-dom'
 
-export const OrderToolbar = () => {
+export const OrderToolbar: FC = () => {
     const history = useHistory()
     const dispatch = useAppDispatch()
     const isAuthenticated = useAppSelector(selectIsAuthenticated)

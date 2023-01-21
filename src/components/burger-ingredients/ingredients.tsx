@@ -1,16 +1,18 @@
+import { FC, useEffect } from 'react'
 import { IIngredient } from '../../types'
 import { Ingredient } from './ingredient'
 import { setActiveTab } from '../../store/burger-ingredients/actions'
 import styles from './ingredients.module.css'
 import { useAppDispatch } from '../../hooks'
-import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-export const Ingredients = ({ name, type, ingredients }: {
+export interface IngredientsProps {
     name: string
     type: string
     ingredients: IIngredient[]
-}) => {
+}
+
+export const Ingredients: FC<IngredientsProps> = ({ name, type, ingredients }) => {
     const dispatch = useAppDispatch()
     const { ref, inView, entry } = useInView({
         threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],

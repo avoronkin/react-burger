@@ -10,11 +10,8 @@ import {
     RegisterPage,
     ResetPasswordPage,
 } from '../../pages'
-import {
-    Route,
-    Switch,
-    useHistory,
-} from 'react-router-dom'
+import { FC, useEffect } from 'react'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import { useAppDispatch, useAppLocation } from '../../hooks'
 import { AppHeader } from '../app-header'
 import { IngredientDetails } from '../ingredient-details'
@@ -24,9 +21,8 @@ import { ROUTES } from '../../constants'
 import { getIngredients } from '../../store/burger-ingredients/actions'
 import { getUser } from '../../store/user/actions'
 import styles from './app.module.css'
-import { useEffect } from 'react'
 
-export const App = () => {
+export const App: FC = () => {
     const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(getIngredients())

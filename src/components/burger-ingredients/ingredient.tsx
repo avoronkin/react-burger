@@ -4,13 +4,15 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components'
 import { useAppLocation, useAppSelector } from '../../hooks'
 import { DND_TYPES } from '../../constants'
+import { FC } from 'react'
 import { IIngredient } from '../../types'
 import { Link } from 'react-router-dom'
 import { selectIngredientsCount } from '../../store/burger-constructor/selectors'
 import styles from './ingredient.module.css'
 import { useDrag } from 'react-dnd'
 
-export const Ingredient = (props: IIngredient) => {
+export type IngredientProps = IIngredient
+export const Ingredient: FC<IngredientProps> = (props) => {
     const location = useAppLocation()
     const counter = useAppSelector(selectIngredientsCount)
     const count = counter[props._id] || 0

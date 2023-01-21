@@ -4,6 +4,7 @@ import {
     RouteProps,
 } from 'react-router-dom'
 import { useAppLocation, useAppSelector } from '../../hooks'
+import { FC } from 'react'
 import { ROUTES } from '../../constants'
 import { selectIsAuthenticated } from '../../store/user/selectors'
 
@@ -11,7 +12,7 @@ type ProtectedRouteParams = RouteProps & {
     role?: 'user' | 'guest'
 }
 
-export const ProtectedRoute = ({ children, role = 'user', ...props }: ProtectedRouteParams) => {
+export const ProtectedRoute: FC<ProtectedRouteParams> = ({ children, role = 'user', ...props }) => {
     const isAuthenticated = useAppSelector(selectIsAuthenticated)
     const location = useAppLocation()
 

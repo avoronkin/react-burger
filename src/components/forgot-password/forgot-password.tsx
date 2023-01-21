@@ -1,6 +1,7 @@
 import { Button, EmailInput } from '@ya.praktikum/react-developer-burger-ui-components'
 import { useAppDispatch, useAppSelector, useForm } from '../../hooks'
 import { ErrorNote } from '../error'
+import { FC } from 'react'
 import { HelpLink } from '../help-link/help-link'
 import { LoadingSpinner } from '../loading-spinner'
 import { ROUTES } from '../../constants'
@@ -14,7 +15,7 @@ interface IForgotPasswordForm {
     email: string
 }
 
-export const ForgotPassword = () => {
+export const ForgotPassword: FC = () => {
     const dispatch = useAppDispatch()
     
     const { 

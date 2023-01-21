@@ -3,20 +3,18 @@ import {
     ListIcon,
     ProfileIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components'
-import { 
-    NavLink, 
-    useRouteMatch, 
-} from 'react-router-dom'
+import { NavLink, useRouteMatch } from 'react-router-dom'
+import { FC } from 'react'
 import styles from './app-header.module.css'
 
-export type TopMenuItem = {
+export type TopMenuItemProps = {
     icon: typeof BurgerIcon | typeof ListIcon | typeof ProfileIcon
     to: string
     text: string
     extraClass?: string
 }
 
-export const TopMenuItem = ({icon: Icon, to, text, extraClass}: TopMenuItem) => {
+export const TopMenuItem: FC<TopMenuItemProps> = ({ icon: Icon, to, text, extraClass }) => {
     const match = useRouteMatch({ path: to, exact: true })
 
     return (

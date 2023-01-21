@@ -1,10 +1,11 @@
 import { EmptyIngredient } from './empty-ingredient'
+import { FC } from 'react'
 import { InternalIngredient } from './internal-ingredient'
 import { selectBurgerInternalIngredients } from '../../store/burger-constructor/selectors'
 import styles from './burger-constructor.module.css'
 import { useAppSelector } from '../../hooks'
 
-export const InternalIngredients = () => {
+export const InternalIngredients: FC = () => {
     const internalIngredients = useAppSelector(selectBurgerInternalIngredients)
 
     return (
