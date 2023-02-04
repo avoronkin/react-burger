@@ -106,13 +106,13 @@ export const App: FC = () => {
                         }}
                     />
                 </Route>)}
-                {background && (<Route path={ROUTES.USER_ORDERS_ITEM}>
+                {background && (<ProtectedRoute path={ROUTES.USER_ORDERS_ITEM} role='user'>
                     <UserOrdersItemModal
                         handleClose={() => {
                             history.replace({ pathname: ROUTES.USER_ORDERS })
                         }}
                     />
-                </Route>)}
+                </ProtectedRoute>)}
             </div>
         </div>
     )
