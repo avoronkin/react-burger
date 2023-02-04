@@ -19,13 +19,13 @@ const topMenuItems: TopMenuItemProps[] = [
     },
     {
         icon: ListIcon,
-        to: ROUTES.ORDERS,
+        to: ROUTES.FEED,
         text: 'Лента заказов',
-        extraClass: styles.orderList,
+        extraClass: styles.feed,
     },
     {
         icon: ProfileIcon,
-        to: ROUTES.PROFILE,
+        to: ROUTES.USER_PROFILE,
         text: 'Личный кабинет',
         extraClass: styles.profile
     }

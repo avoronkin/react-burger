@@ -1,0 +1,15 @@
+.statusDone {
+    color: #00cccc;
+}
+
+.ordersNumbersByStatus {
+    display: flex;
+    flex-direction: column;
+}
+
+.statusRows {
+    /* display: grid; */
+}
+.statusRow {
+    /* grid-column: 1 / 6; */
+}

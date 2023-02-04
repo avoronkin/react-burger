@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
-import { EmptyIngredient } from './empty-ingredient'
+import { EmptyIngredient } from '../empty-ingredient/empty-ingredient'
 import { selectBurgerBunIngredient } from '../../store/burger-constructor/selectors'
 import styles from './burger-constructor.module.css'
 import { useAppSelector } from '../../hooks'

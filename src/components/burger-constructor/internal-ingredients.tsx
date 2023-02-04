@@ -1,4 +1,4 @@
-import { EmptyIngredient } from './empty-ingredient'
+import { EmptyIngredient } from '../empty-ingredient/empty-ingredient'
 import { FC } from 'react'
 import { InternalIngredient } from './internal-ingredient'
 import { selectBurgerInternalIngredients } from '../../store/burger-constructor/selectors'
