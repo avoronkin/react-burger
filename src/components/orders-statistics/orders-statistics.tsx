@@ -57,7 +57,7 @@ export const OrdersStatistics: FC<OrdersStatisticsProps> = ({ done, processing, 
                     {
                         doneRows.map((done, rowIndex) => {
                             return (
-                                <div className={`${styles.statusRow} mr-2`} key={rowIndex}>
+                                <div className='mr-2' key={rowIndex}>
                                     {
                                         done.map((id, index) => {
                                             return (<p className={`${styles.statusDone} text text_type_main-small`} key={index}>{id}</p>)
@@ -70,7 +70,7 @@ export const OrdersStatistics: FC<OrdersStatisticsProps> = ({ done, processing, 
                     {
                         processingRows.map((processing, rowIndex) => {
                             return (
-                                <div className={`${styles.statusRow} mr-2`} key={rowIndex}>
+                                <div className='mr-2' key={rowIndex}>
                                     {
                                         processing.map((id, index) => {
                                             return (<p className='text text_type_main-small' key={index}>{id}</p>)

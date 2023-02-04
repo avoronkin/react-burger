@@ -11,7 +11,6 @@ import { useParams } from 'react-router-dom'
 
 export const UserOrdersItemPage = () => {
     const { id } = useParams<{ id: string }>()
-    console.log('UserOrdersItemPage', id)
     const order = useAppSelector(selectOrderDetails(id))
     let accessToken = getCookie('accessToken')
     accessToken = accessToken?.replace('Bearer ', '')
