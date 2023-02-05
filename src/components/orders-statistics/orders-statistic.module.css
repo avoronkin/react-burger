@@ -1,0 +1,8 @@
+.statusDone {
+    color: #00cccc;
+}
+
+.ordersNumbersByStatus {
+    display: flex;
+    flex-direction: column;
+}

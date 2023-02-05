@@ -1,6 +1,7 @@
 .nav {
     list-style-type: none;
     padding: 0;
+    min-width: 300px;
 }
 .navItem {
     text-decoration: none;

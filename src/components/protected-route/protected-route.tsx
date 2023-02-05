@@ -17,7 +17,6 @@ export const ProtectedRoute: FC<ProtectedRouteParams> = ({ children, role = 'use
     const location = useAppLocation()
 
     if (role === 'guest' && isAuthenticated) {
-        console.log(`authenticated guest, redirecting to ${location?.state?.from || ROUTES.MAIN}, from ${location.pathname}`)
         return (
             <Route {...props}>
                 <Redirect to={location?.state?.from || ROUTES.MAIN} />
@@ -26,7 +25,6 @@ export const ProtectedRoute: FC<ProtectedRouteParams> = ({ children, role = 'use
     }
 
     if (role === 'user' && !isAuthenticated) {
-        console.log(`not authenticated user, redirecting to ${ROUTES.LOGIN}, from ${location.pathname}`)
         return (
             <Route {...props}>
                 <Redirect to={{ pathname: ROUTES.LOGIN, state: { from: location } }} />
@@ -34,6 +32,5 @@ export const ProtectedRoute: FC<ProtectedRouteParams> = ({ children, role = 'use
         )
     }
 
-    console.log(`role ${role} ok`)
     return (<Route {...props}>{children}</Route>)
 }

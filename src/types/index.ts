@@ -28,3 +28,36 @@ export interface AppLocationState {
     background?: Location
     from?: Location
 }
+
+export type TOrderStatus = 'done' | 'created' | 'pending' | 'canceled'
+export interface IOrderMain {
+    _id: string
+    createdAt: string
+    updatedAt: string
+    number: number
+    name: string
+    status: TOrderStatus
+}
+export interface IOrder extends IOrderMain {
+    ingredients: string[]
+}
+
+export interface IOrderShortIngredient {
+    name: string
+    image: string
+}
+export interface IOrderShort extends IOrderMain {
+    ingredients: IOrderShortIngredient[]
+    cost: number
+}
+
+export interface IOrderDetailsIngredient {
+    image: string
+    name: string
+    price: number
+    count: number
+}
+export interface IOrderDetails extends IOrderMain{
+    ingredients: IOrderDetailsIngredient[]
+    cost: number
+}
