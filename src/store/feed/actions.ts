@@ -1,5 +1,6 @@
 import { WsActionTypes } from '../../services/socketMiddleware'
 import { WsFeed } from './state'
+import { AnyAction } from 'redux'
 export const FEED_WS_OPEN = 'FEED_WS_OPEN' as const
 export const FEED_WS_OPENED = 'FEED_WS_OPENED' as const
 export const FEED_WS_CLOSE = 'FEED_WS_CLOSE' as const

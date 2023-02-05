@@ -1,9 +1,13 @@
-import { ICreateOrderRequest, normaApi } from '../../services/norma-api'
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { getCookie } from '../../services/cookie'
+import { ICreateOrderRequest, normaApi } from '../../services/norma-api'
 import { orderSlice } from './slice'
+import { getCookie } from '../../services/cookie'
 import { refreshToken } from '../user/actions'
 import { statePath } from './state'
+
+export const { 
+    closeOrderDetails 
+} = orderSlice.actions
 
 export const createOrder = createAsyncThunk(
     `${statePath}/createOrder`,
@@ -31,7 +35,3 @@ export const createOrder = createAsyncThunk(
         
     }
 )
-
-export const { 
-    closeOrderDetails 
-} = orderSlice.actions

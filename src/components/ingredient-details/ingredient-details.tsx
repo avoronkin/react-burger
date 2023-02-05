@@ -15,6 +15,10 @@ export const IngredientDetails: FC = () => {
     useEffect(() => {
         if (!ingredientDetails || ingredientDetails._id != id ) {
             const ingredient = ingredients.find(i => i._id === id)
+            if (!ingredient) {
+                return
+            }
+            
             dispatch(addIngredientDetails({ ingredient }))
         }
 

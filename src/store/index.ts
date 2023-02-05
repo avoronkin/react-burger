@@ -1,24 +1,24 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit'
+import { combineReducers } from 'redux'
 import { burgerConstructorSlice } from './burger-constructor/slice'
 import { burgerIngredientsSlice } from './burger-ingredients/slice'
-import { combineReducers } from 'redux'
+import { ingredientDetailsSlice } from './ingredient-details/slice'
+import { userSlice } from './user/slice'
+import { orderSlice } from './order/slice'
 import { feedReducer } from './feed/reducer'
 import { feedWsActionTypes } from '../store/feed/actions'
-import { ingredientDetailsSlice } from './ingredient-details/slice'
-import { orderSlice } from './order/slice'
-import { socketMiddleware } from '../services/socketMiddleware'
-import { userFeedReducer } from './user-feed/reducer'
 import { userFeedWsActionTypes } from '../store/user-feed/actions'
-import { userSlice } from './user/slice'
+import { userFeedReducer } from './user-feed/reducer'
+import { socketMiddleware } from '../services/socketMiddleware'
 
 export const rootReducer = combineReducers({
+    [orderSlice.name]: orderSlice.reducer,
     [burgerConstructorSlice.name]: burgerConstructorSlice.reducer,
     [burgerIngredientsSlice.name]: burgerIngredientsSlice.reducer,
     [ingredientDetailsSlice.name]: ingredientDetailsSlice.reducer,
-    [orderSlice.name]: orderSlice.reducer,
     [userSlice.name]: userSlice.reducer,
     feed: feedReducer,
-    userFeed: userFeedReducer
+    userFeed: userFeedReducer,
 })
 
 export const store = configureStore({

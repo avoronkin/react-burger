@@ -1,13 +1,13 @@
 import {
-    FEED_ACTIONS,
     FEED_WS_CLOSED,
     FEED_WS_ON_ERROR,
     FEED_WS_ON_MESSAGE,
     FEED_WS_OPENED,
 } from './actions'
 import { FeedState, initialState } from './state'
+import { AnyAction } from '@reduxjs/toolkit'
 
-export const feedReducer = (state = initialState, action: FEED_ACTIONS): FeedState => {
+export const feedReducer = (state = initialState, action: AnyAction = { type: undefined }): FeedState => {
     switch (action.type) {
         case FEED_WS_OPENED:
             return {

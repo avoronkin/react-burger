@@ -1,11 +1,12 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { IIngredient } from '../../types'
 import { initialState, statePath } from './state'
-import { createSlice } from '@reduxjs/toolkit'
 
 export const ingredientDetailsSlice = createSlice({
     name: statePath,
     initialState,
     reducers: {
-        addIngredientDetails: (state, action) => {
+        addIngredientDetails: (state, action: PayloadAction<{ingredient: IIngredient}>) => {
             state.ingredient = action.payload.ingredient
         },
         removeIngredientDetails: (state) => {

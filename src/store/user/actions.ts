@@ -1,3 +1,4 @@
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import {
     IForgotPasswordRequest,
     ILoginRequest,
@@ -6,7 +7,6 @@ import {
     IUpdateUserRequest,
     normaApi
 } from '../../services/norma-api'
-import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getCookie } from '../../services/cookie'
 import { statePath } from './state'
 
