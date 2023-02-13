@@ -8,7 +8,10 @@ export interface ErrorNoteProps {
 export const ErrorNote: FC<ErrorNoteProps> = ({ children }) => {
 
     return (
-        <div className={`${styles.error} text text_type_main-default m-3`}>
+        <div
+            data-test='error-note'
+            className={`${styles.error} text text_type_main-default m-3`}
+        >
             {children}
         </div>
     )

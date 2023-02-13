@@ -7,11 +7,14 @@ import { useAppSelector } from '../../hooks'
 
 export const BunIngredient: FC<PropsWithChildren> = ({ children }) => {
     const bunIngredient = useAppSelector(selectBurgerBunIngredient)
-    const emptyText = 'Булка на выбрана'
+    const emptyText = 'Булка не выбрана'
 
     return (
         <div className={`${styles.ingridients}`}>
-            <div className={`${styles.ingridient} pl-6`}>
+            <div 
+                data-test='bc-ingredient-bun-top'
+                className={`${styles.ingridient} pl-6`}
+            >
                 {!bunIngredient && <EmptyIngredient type='top' extraClass='ml-2'>{emptyText}</EmptyIngredient>}
                 {bunIngredient && <ConstructorElement
                     text={`${bunIngredient.name} (верх)`}
@@ -23,7 +26,10 @@ export const BunIngredient: FC<PropsWithChildren> = ({ children }) => {
                 />}
             </div>
             {children}
-            <div className={`${styles.ingridient} pl-6`}>
+            <div 
+                data-test='bc-ingredient-bun-bottom'
+                className={`${styles.ingridient} pl-6`}
+            >
                 {!bunIngredient && <EmptyIngredient type='bottom' extraClass='ml-2'>{emptyText}</EmptyIngredient>}
                 {bunIngredient && <ConstructorElement
                     text={`${bunIngredient.name} (низ)`}

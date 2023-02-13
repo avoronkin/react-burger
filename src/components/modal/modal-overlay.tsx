@@ -10,6 +10,7 @@ export const ModalOverlay: FC<ModalOverlayProps> = ({ handleClose, children }) =
 
     return (
         <div
+            data-test='modal-overlay'
             onClick={handleClose}
             className={styles.modalOverlay}
         >

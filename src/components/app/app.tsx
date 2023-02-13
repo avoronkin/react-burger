@@ -30,10 +30,10 @@ import styles from './app.module.css'
 export const App: FC = () => {
     const dispatch = useAppDispatch()
     useEffect(() => {
-        dispatch(getIngredients())
+        dispatch(getUser())
     }, [dispatch])
     useEffect(() => {
-        dispatch(getUser())
+        dispatch(getIngredients())
     }, [dispatch])
 
     const location = useAppLocation()

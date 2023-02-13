@@ -28,6 +28,7 @@ export const burgerIngredientsSlice = createSlice({
             })
             .addCase(getIngredients.fulfilled, (state, action) => {
                 state.ingredients = action.payload.ingredients
+                state.ingredientsError = !action.payload.success
                 state.ingredientsRequest = false
             })
             .addCase(getIngredients.rejected, (state) => {

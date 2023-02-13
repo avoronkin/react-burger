@@ -34,10 +34,14 @@ export const OrderToolbar: FC = () => {
     return (
         <>
             <div className={`${styles.orderToolbar} p-6`}>
-                <span className='text text_type_main-medium pr-4'>
+                <span 
+                    data-test='bc-cost'
+                    className='text text_type_main-medium pr-4'
+                >
                     {burgerCost} <CurrencyIcon type='primary' />
                 </span>
                 <Button
+                    data-test='bc-order-button'
                     type='primary'
                     size='large'
                     htmlType='button'

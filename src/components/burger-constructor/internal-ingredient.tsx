@@ -74,6 +74,7 @@ export const InternalIngredient: FC<InternalIngredientProps> = ({ ingredient, in
 
     return (
         <div
+            data-test='bc-ingredient'
             style={{ opacity }}
             ref={ref}
             className={styles.ingridient}
