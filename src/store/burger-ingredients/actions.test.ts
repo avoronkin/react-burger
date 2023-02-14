@@ -47,7 +47,10 @@ describe('burger-ingredients actions', () => {
                 },
                 {
                     type: 'burgerIngredients/getIngredients/fulfilled',
-                    payload: { ingredients: [ingredient] },
+                    payload: { 
+                        success: true,
+                        ingredients: [ingredient] 
+                    },
                 },
             ])
         })

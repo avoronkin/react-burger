@@ -124,7 +124,10 @@ describe('burger-ingredients reducer', () => {
 
             const stateAfter = reducer(stateBefore, {
                 type: 'burgerIngredients/getIngredients/fulfilled',
-                payload: { ingredients: [mainIngredient, sauceIngredient] },
+                payload: { 
+                    success: true,
+                    ingredients: [mainIngredient, sauceIngredient] 
+                },
             })
 
             expect(stateAfter).toEqual({
