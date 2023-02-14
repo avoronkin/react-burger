@@ -1,3 +1,4 @@
+import selectors from '../support/selectors'
 
 describe('конструктор бургеров', () => {
     beforeEach(() => {
@@ -6,46 +7,41 @@ describe('конструктор бургеров', () => {
 
     describe('перетаскивание ингредиента в конструктор', () => {
         it('перетаскивание булки', () => {
-            cy.contains('[data-test="il-ingredient"]', 'Краторная булка N-200i').as('bunIngredient')
-            cy.get('[data-test="bc"]').as('burgerConstuctor')
-
-            cy.get('[data-test="bc-ingredient-bun-top"]').contains('Булка не выбрана')
-            cy.get('[data-test="bc-ingredient-bun-bottom"]').contains('Булка не выбрана')
-            cy.get('[data-test="bc-cost"]').then($burgerCost => {
-                const burgerCost = $burgerCost.text().trim()
-                expect(burgerCost).eq('0')
+            cy.get(selectors.burger.bunTop).contains('Булка не выбрана')
+            cy.get(selectors.burger.bunBottom).contains('Булка не выбрана')
+            cy.get(selectors.burger.totalCost).then($burgerTotlaCost => {
+                const burgerTotalCost = $burgerTotlaCost.text().trim()
+                expect(burgerTotalCost).eq('0')
             })
 
-            cy.get('@bunIngredient').trigger('dragstart')
-            cy.get('@burgerConstuctor').trigger('drop')
+            cy.contains(selectors.ingredients.ingredient, 'Краторная булка N-200i').trigger('dragstart')
+            cy.get(selectors.burger.main).trigger('drop')
 
-            cy.get('[data-test="bc-ingredient-bun-top"]').contains('Краторная булка N-200i (верх)')
-            cy.get('[data-test="bc-ingredient-bun-bottom"]').contains('Краторная булка N-200i (низ)')
-            cy.get('[data-test="bc-cost"]').then($burgerCost => {
-                const burgerCost = $burgerCost.text().trim()
-                expect(burgerCost).eq('2510')
+            cy.get(selectors.burger.bunTop).contains('Краторная булка N-200i (верх)')
+            cy.get(selectors.burger.bunBottom).contains('Краторная булка N-200i (низ)')
+            cy.get(selectors.burger.totalCost).then($burgerTotlaCost => {
+                const burgerTotlaCost = $burgerTotlaCost.text().trim()
+                expect(burgerTotlaCost).eq('2510')
             })
         })
 
         it('перетаскивание основного ингредиента', () => {
-            cy.contains('[data-test="il-ingredient"]', 'Мясо бессмертных моллюсков Protostomia').as('mainIngredient')
-            cy.get('[data-test="bc"]').as('burgerConstuctor')
-
+            cy.get(selectors.burger.main).as('burgerConstuctor')
 
             cy.get('@burgerConstuctor').contains('Ингредиенты не выбраны')
-            cy.get('[data-test="bc-ingredient"]').should('not.exist')
-            cy.get('[data-test="bc-cost"]').then($burgerCost => {
-                const burgerCost = $burgerCost.text().trim()
-                expect(burgerCost).eq('0')
+            cy.get(selectors.burger.mainIngredient).should('not.exist')
+            cy.get(selectors.burger.totalCost).then($burgerTotlaCost => {
+                const burgerTotlaCost = $burgerTotlaCost.text().trim()
+                expect(burgerTotlaCost).eq('0')
             })
 
-            cy.get('@mainIngredient').trigger('dragstart')
+            cy.contains(selectors.ingredients.ingredient, 'Мясо бессмертных моллюсков Protostomia').trigger('dragstart')
             cy.get('@burgerConstuctor').trigger('drop')
 
-            cy.get('[data-test="bc-ingredient"]').contains('Мясо бессмертных моллюсков Protostomia')
-            cy.get('[data-test="bc-cost"]').then($burgerCost => {
-                const burgerCost = $burgerCost.text().trim()
-                expect(burgerCost).eq('1337')
+            cy.get(selectors.burger.mainIngredient).contains('Мясо бессмертных моллюсков Protostomia')
+            cy.get(selectors.burger.totalCost).then($burgerTotlaCost => {
+                const burgerTotlaCost = $burgerTotlaCost.text().trim()
+                expect(burgerTotlaCost).eq('1337')
             })
         })
     })
@@ -65,18 +61,18 @@ describe('конструктор бургеров', () => {
                 }
             ).as('createOrder')
 
-            cy.contains('[data-test="il-ingredient"]', 'Краторная булка N-200i').as('bunIngredient')
-            cy.contains('[data-test="il-ingredient"]', 'Мясо бессмертных моллюсков Protostomia').as('mainIngredient')
-            cy.get('[data-test="bc"]').as('burgerConstuctor')
+            cy.contains(selectors.ingredients.ingredient, 'Краторная булка N-200i').as('bunIngredient')
+            cy.contains(selectors.ingredients.ingredient, 'Мясо бессмертных моллюсков Protostomia').as('mainIngredient')
+            cy.get(selectors.burger.main).as('burgerConstuctor')
 
-            cy.get('[data-test="modal-content"]').should('not.exist')
-            cy.get('[data-test="bc-ingredient-bun-top"]').contains('Булка не выбрана')
-            cy.get('[data-test="bc-ingredient-bun-bottom"]').contains('Булка не выбрана')
+            cy.get(selectors.modal.content).should('not.exist')
+            cy.get(selectors.burger.bunTop).contains('Булка не выбрана')
+            cy.get(selectors.burger.bunBottom).contains('Булка не выбрана')
             cy.get('@burgerConstuctor').contains('Ингредиенты не выбраны')
-            cy.get('[data-test="bc-ingredient"]').should('not.exist')
-            cy.get('[data-test="bc-cost"]').then($burgerCost => {
-                const burgerCost = $burgerCost.text().trim()
-                expect(burgerCost).eq('0')
+            cy.get(selectors.burger.mainIngredient).should('not.exist')
+            cy.get(selectors.burger.totalCost).then($burgerTotlaCost => {
+                const burgerTotlaCost = $burgerTotlaCost.text().trim()
+                expect(burgerTotlaCost).eq('0')
             })
 
             cy.get('@bunIngredient').trigger('dragstart')
@@ -84,11 +80,11 @@ describe('конструктор бургеров', () => {
             cy.get('@mainIngredient').trigger('dragstart')
             cy.get('@burgerConstuctor').trigger('drop')
 
-            cy.get('[data-test="bc-order-button"]').click()
+            cy.get(selectors.burger.createOrder).click()
             cy.wait('@createOrder')
             
-            cy.get('[data-test="modal-content"]').as('modalContent')
-            cy.get('[data-test="modal-close"]').as('modalClose')
+            cy.get(selectors.modal.content).as('modalContent')
+            cy.get(selectors.modal.close).as('modalClose')
 
             cy.get('@modalContent').contains('40651')
             cy.get('@modalContent').contains('Ваш заказ начали готовить')

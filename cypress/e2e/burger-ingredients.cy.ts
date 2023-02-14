@@ -1,3 +1,4 @@
+import selectors from '../support/selectors'
 
 describe('список ингредиентов', () => {
     describe('загрузка списка ингредиентов', () => {
@@ -9,7 +10,7 @@ describe('список ингредиентов', () => {
                     }
                 })
 
-                cy.get('[data-test="error-note"]')
+                cy.get(selectors.errorNote)
                     .contains('Ошибка при загрузке ингредиентов')
             })
 
@@ -21,7 +22,7 @@ describe('список ингредиентов', () => {
                     }
                 })
 
-                cy.get('[data-test="error-note"]')
+                cy.get(selectors.errorNote)
                     .contains('Ошибка при загрузке ингредиентов')
             })
         })
@@ -38,7 +39,7 @@ describe('список ингредиентов', () => {
                 wait: false
             })
 
-            cy.get('[data-test="loader"]')
+            cy.get(selectors.loader)
         })
 
         it('на странице есть список ингредиентов', () => {
@@ -46,8 +47,8 @@ describe('список ингредиентов', () => {
 
             const ingredientNames: string[] = []
 
-            cy.get('[data-test="il-ingredient"]').each($ingredient => {
-                const name = $ingredient.find('[data-test="il-ingredient-title"]').text().trim()
+            cy.get(selectors.ingredients.ingredient).each($ingredient => {
+                const name = $ingredient.find(selectors.ingredients.ingredientTitle).text().trim()
                 ingredientNames.push(name)
             })
             .then(() => {
@@ -67,34 +68,30 @@ describe('список ингредиентов', () => {
         beforeEach(() => {
             cy.openMain()
 
-            cy.get('#modals-root').as('modal')
+            cy.contains(selectors.ingredients.ingredient, 'Краторная булка N-200i').click()
+            cy.get(selectors.modal.content).as('modalContent')
+            cy.get(selectors.modal.close).as('modalClose')
+
         })
 
         it('открывается при клике по ингредиенту', () => {
-            cy.contains('Краторная булка N-200i').parent().click()
-            cy.get('[data-test="modal-content"]').as('modalContent')
+            cy.get(selectors.modal.title).contains('Детали ингридиента')
+            cy.get('@modalContent').get(selectors.ingredientDetails.title).contains('Краторная булка N-200i')
 
-            cy.get('[data-test="modal-title"]').contains('Детали ингридиента')
-            cy.get('@modalContent').get('[data-test="id-name"]').contains('Краторная булка N-200i')
+            cy.get('@modalContent').get(selectors.ingredientDetails.calories.title).contains('Калории')
+            cy.get('@modalContent').get(selectors.ingredientDetails.calories.value).contains('420')
 
-            cy.get('@modalContent').get('[data-test="id-calories-title"]').contains('Калории')
-            cy.get('@modalContent').get('[data-test="id-calories-value"]').contains('420')
+            cy.get('@modalContent').get(selectors.ingredientDetails.proteins.title).contains('Белки')
+            cy.get('@modalContent').get(selectors.ingredientDetails.proteins.value).contains('80')
 
-            cy.get('@modalContent').get('[data-test="id-proteins-title"]').contains('Белки')
-            cy.get('@modalContent').get('[data-test="id-proteins-value"]').contains('80')
+            cy.get('@modalContent').get(selectors.ingredientDetails.fat.title).contains('Жиры')
+            cy.get('@modalContent').get(selectors.ingredientDetails.fat.value).contains('24')
 
-            cy.get('@modalContent').get('[data-test="id-fat-title"]').contains('Жиры')
-            cy.get('@modalContent').get('[data-test="id-fat-value"]').contains('24')
-
-            cy.get('@modalContent').get('[data-test="id-carbohydrates-title"]').contains('Углеводы')
-            cy.get('@modalContent').get('[data-test="id-carbohydrates-value"]').contains('53')
+            cy.get('@modalContent').get(selectors.ingredientDetails.carbohydrates.title).contains('Углеводы')
+            cy.get('@modalContent').get(selectors.ingredientDetails.carbohydrates.value).contains('53')
         })
 
         it('закрывается при клике на кнопку закрытия', () => {
-            cy.contains('Краторная булка N-200i').parent().click()
-            cy.get('[data-test="modal-content"]').as('modalContent')
-            cy.get('[data-test="modal-close"]').as('modalClose')
-
             cy.get('@modalContent')
 
             cy.get('@modalClose').click()
@@ -103,10 +100,6 @@ describe('список ингредиентов', () => {
         })
 
         it('закрывается по esc', () => {
-            cy.contains('Краторная булка N-200i').parent().click()
-            cy.get('[data-test="modal-content"]').as('modalContent')
-            cy.get('[data-test="modal-close"]').as('modalClose')
-
             cy.get('@modalContent')
 
             cy.get('body').type('{esc}')
