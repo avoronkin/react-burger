@@ -15,6 +15,10 @@ export const IngredientDetails: FC = () => {
     useEffect(() => {
         if (!ingredientDetails || ingredientDetails._id != id ) {
             const ingredient = ingredients.find(i => i._id === id)
+            if (!ingredient) {
+                return
+            }
+            
             dispatch(addIngredientDetails({ ingredient }))
         }
 
@@ -30,25 +34,52 @@ export const IngredientDetails: FC = () => {
             {!ingredientDetails && <div>Ингредтент не найден</div>}
             {ingredientDetails && <div className={`${styles.ingredientDetailsContent}`}>
                 <img alt={ingredientDetails.name} src={ingredientDetails.image_large} />
-                <h4 className='text text_type_main-medium'>{ingredientDetails.name}</h4>
+                <h4 
+                    data-test='id-name'
+                    className='text text_type_main-medium'
+                >{ingredientDetails.name}</h4>
                 <p className={`${styles.ingredientDetailsDescription} text text_type_main-small p-5`}> </p>
 
                 <section className={`${styles.params} p-5`}>
                     <div>
-                        <div className={`${styles.paramsRow} text text_type_main-default text_color_inactive`}>Калории,ккал</div>
-                        <div className={`${styles.paramsRow} text text_type_digits-default text_color_inactive`}>{ingredientDetails.calories}</div>
+                        <div 
+                            data-test='id-calories-title'
+                            className={`${styles.paramsRow} text text_type_main-default text_color_inactive`}
+                        >Калории,ккал</div>
+                        <div
+                            data-test='id-calories-value'
+                            className={`${styles.paramsRow} text text_type_digits-default text_color_inactive`}
+                        >{ingredientDetails.calories}</div>
                     </div>
                     <div>
-                        <div className={`${styles.paramsRow} text text_type_main-default text_color_inactive`}>Белки, г</div>
-                        <div className={`${styles.paramsRow} text text_type_digits-default text_color_inactive`}>{ingredientDetails.proteins}</div>
+                        <div
+                            data-test='id-proteins-title'
+                            className={`${styles.paramsRow} text text_type_main-default text_color_inactive`}
+                        >Белки, г</div>
+                        <div 
+                            data-test='id-proteins-value'
+                            className={`${styles.paramsRow} text text_type_digits-default text_color_inactive`}
+                        >{ingredientDetails.proteins}</div>
                     </div>
                     <div>
-                        <div className={`${styles.paramsRow} text text_type_main-default text_color_inactive`}>Жиры, г</div>
-                        <div className={`${styles.paramsRow} text text_type_digits-default text_color_inactive`}>{ingredientDetails.proteins}</div>
+                        <div
+                            data-test='id-fat-title'
+                            className={`${styles.paramsRow} text text_type_main-default text_color_inactive`}
+                        >Жиры, г</div>
+                        <div
+                            data-test='id-fat-value'
+                            className={`${styles.paramsRow} text text_type_digits-default text_color_inactive`}
+                        >{ingredientDetails.fat}</div>
                     </div>
                     <div>
-                        <div className={`${styles.paramsRow} text text_type_main-default text_color_inactive`}>Углеводы, г</div>
-                        <div className={`${styles.paramsRow} text text_type_digits-default text_color_inactive`}>{ingredientDetails.carbohydrates}</div>
+                        <div 
+                            data-test='id-carbohydrates-title'
+                            className={`${styles.paramsRow} text text_type_main-default text_color_inactive`}
+                        >Углеводы, г</div>
+                        <div 
+                            data-test='id-carbohydrates-value'
+                            className={`${styles.paramsRow} text text_type_digits-default text_color_inactive`}
+                        >{ingredientDetails.carbohydrates}</div>
                     </div>
                 </section>
             </div>}

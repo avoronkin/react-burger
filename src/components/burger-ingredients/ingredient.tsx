@@ -27,9 +27,11 @@ export const Ingredient: FC<IngredientProps> = (props) => {
 
     return (
         <div
+            data-test='il-ingredient'
             className={`${styles.ingredient} text text_type_main-default`}
             ref={dragRef}>
             <Link
+                data-test='il-ingredient-link'
                 className={styles.ingredientLink}
                 to={{
                     pathname: `/ingredients/${props._id}`,
@@ -37,10 +39,20 @@ export const Ingredient: FC<IngredientProps> = (props) => {
                 }}
             >
 
-                {count ? <Counter count={count} size='small' extraClass='m-1' /> : null}
+                {count ? <Counter 
+                    data-test='il-ingredient-counter' 
+                    count={count} 
+                    size='small' 
+                    extraClass='m-1' 
+                /> : null}
                 <img alt={props.name} src={props.image} />
-                <h3 className={styles.ingredientPrice}><span className='pr-2'>{props.price}</span><CurrencyIcon type="primary" /></h3>
-                <h4>{props.name} </h4>
+                <h3 
+                    data-test='il-ingredient-price'
+                    className={styles.ingredientPrice}
+                ><span className='pr-2'>{props.price}</span><CurrencyIcon type="primary" /></h3>
+                <h4 
+                    data-test='il-ingredient-title'
+                >{props.name} </h4>
             </Link>
         </div>
     )

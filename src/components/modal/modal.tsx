@@ -24,12 +24,21 @@ export const Modal: FC<ModalProps> = ({ handleClose, title, children }) => {
                     onClick={(e) => { e.stopPropagation() }}
                 >
                     <header className={`${styles.modalHeader} pb-3`}>
-                        <h3 className='text text_type_main-medium'>{title}</h3>
-                        <span className={styles.modalClose} >
+                        <h3
+                            data-test='modal-title'
+                            className='text text_type_main-medium'
+                        >{title}</h3>
+                        <span 
+                            data-test='modal-close'
+                            className={styles.modalClose}
+                        >
                             <CloseIcon type="primary" onClick={handleClose} />
                         </span>
                     </header>
-                    <main className='p-7 pt-4'>
+                    <main
+                        data-test='modal-content'
+                        className='p-7 pt-4'
+                    >
                         {children}
                     </main>
                 </section>

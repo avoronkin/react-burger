@@ -1,13 +1,14 @@
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { initialState, statePath } from './state'
-import { createSlice } from '@reduxjs/toolkit'
+import { IIngredient } from '../../types'
 
 export const burgerConstructorSlice = createSlice({
     name: statePath,
     initialState,
     reducers: {
-        addBurgerIngredient: (state, action) => {
+        addBurgerIngredient: (state, action: PayloadAction<{ ingredient: IIngredient }>) => {
             const { ingredient } = action.payload
-            
+
             if (ingredient.type === 'bun') {
                 state.bunIngredient = ingredient
             } else {
@@ -15,12 +16,12 @@ export const burgerConstructorSlice = createSlice({
             }
 
         },
-        removeBurgerIngredient: (state, action) => {
+        removeBurgerIngredient: (state, action: PayloadAction<{ ingredient: IIngredient }>) => {
             const { ingredient } = action.payload
 
             state.internalIngredients = state.internalIngredients.filter(i => i.uid !== ingredient.uid)
         },
-        moveBurgerIngredient: (state, action) => {
+        moveBurgerIngredient: (state, action: PayloadAction<{ newIndex: number, oldIndex: number }>) => {
             const { newIndex, oldIndex } = action.payload
 
             state.internalIngredients.splice(newIndex, 0, state.internalIngredients.splice(oldIndex, 1)[0])

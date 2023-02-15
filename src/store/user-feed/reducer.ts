@@ -1,13 +1,13 @@
 import {
-    USER_FEED_ACTIONS,
     USER_FEED_WS_CLOSED,
     USER_FEED_WS_ON_ERROR,
     USER_FEED_WS_ON_MESSAGE,
     USER_FEED_WS_OPENED,
 } from './actions'
 import { UserFeedState, initialState } from './state'
+import { AnyAction } from '@reduxjs/toolkit'
 
-export const userFeedReducer = (state = initialState, action: USER_FEED_ACTIONS): UserFeedState => {
+export const userFeedReducer = (state = initialState, action: AnyAction = { type: undefined }): UserFeedState => {
     switch (action.type) {
         case USER_FEED_WS_OPENED:
             return {

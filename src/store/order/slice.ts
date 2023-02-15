@@ -1,6 +1,6 @@
+import { createSlice } from '@reduxjs/toolkit'
 import { initialState, statePath } from './state'
 import { createOrder } from './actions'
-import { createSlice } from '@reduxjs/toolkit'
 
 export const orderSlice = createSlice({
     name: statePath,

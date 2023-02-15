@@ -48,7 +48,6 @@
         "semi": [
             "error",
             "never"
-        ],
-        "sort-imports": "error"
+        ]
     }
 }

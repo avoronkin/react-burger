@@ -24,7 +24,9 @@ export const BurgerConstructor: FC = () => {
 
     return (
         <>
-            <div ref={dropRef}>
+            <div 
+                data-test='bc'
+                ref={dropRef}>
                 <BunIngredient>
                     <InternalIngredients />
                 </BunIngredient>
